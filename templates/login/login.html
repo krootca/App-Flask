@@ -17,8 +17,7 @@
 
 <center>
 	<content>
-		<br>
-		<h1>Bienvenido!</h1>
+		<h1>LOGIN</h1>
 	</content>
 
 
@@ -36,7 +35,7 @@
 		<input type="text" name="email" placeholder="Correo..." id="email" onfocus="normalColorCorreo()"><br>
 		<label for="password">Contraseña:</label><br>
 		<input type="password" name="password" placeholder="Contraseña..." id="password" onfocus="normalColorPassword()"><br>
-		<input type="submit" value="Login" class="btn-primary btn-hover" onclick="regex_re()"><br>
+		<input type="submit" value="Login" class="btn-primary btn-hover"><br>
 
 	</form>
 </center>
@@ -143,33 +142,32 @@ var password_re=/^[a-zA-Z0-9\W\w]{7,30}$/;
 var form=document.getElementById("form-login");
 var my_correo=document.getElementById("email");
 var my_password=document.getElementById("password");
+$( "#form-login" ).on( "submit",function(e){
 
-function regex_re(){
 	
 	var result_correo=correo_re.test(my_correo.value);
 	var result_password=password_re.test(my_password.value);
-	
-	$( "#form-login" ).on( "submit",function(e){
-		if (result_correo===true && result_password===true) {
-			true
-		}else{
-			e.preventDefault()
-			console.log(result_correo, result_password)
-			if(result_correo===false && result_password===false){
-				my_correo.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
-				my_password.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";	
-			}
-			else if (result_correo==false) {
-				my_correo.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
-				console.log("result_correo")
-			}
-			else if (result_password==false) {
-				my_password.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
-				console.log("result_password")
-			}
-		}
-	});
-};
+	if (result_correo===true && result_password===true) {
+		console.log(my_correo.value,my_password.value,result_correo, result_password)
+		result_correo=true;
+		result_password=true;
+	}else if (result_correo===false && result_password===true) {
+		console.log(my_correo.value,my_password.value,result_correo, result_password)
+		my_correo.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
+		e.preventDefault()
+
+	}
+	else if (result_correo===true && result_password===false) {
+		console.log(my_correo.value,my_password.value,result_correo, result_password)
+		my_password.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
+		e.preventDefault()
+	}else if(result_correo===false && result_password===false){
+		console.log(my_correo.value,my_password.value,result_correo, result_password)
+		my_correo.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
+		my_password.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
+		e.preventDefault()
+	}
+});
 
 
 function normalColorCorreo(){
