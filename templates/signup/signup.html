@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>App-Flask</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename = 'css/base.css') }}>
+
+
+	<meta name="author" content="Jackeline">
+	<meta name="description" content="Es una aplicación para la pruebas de la universidad.">
+</head>
+<body>
+<a href="/login">
+	<img src="{{ url_for('static', filename='images/icons/go.svg') }}" style="transform:rotate(90deg);position: absolute;border-radius:50%;width:100px;">
+</a>
+<center>
+
+	<content>
+		<br>
+		<h3 class="{{ style_warning }}">{{ text_warning }}</h3>
+	</content>
+
+
+	<form action="{{ url_for('signup') }}" method="post" id="form-login" enctype="multipart/form-data">
+		<label for="correo">Nombre:</label><br>
+		<input type="text" name="user_name" placeholder="Nombre..."><br>
+		<label for="correo">Apellido:</label><br>
+		<input type="text" name="user_surname" placeholder="Apellido..."><br>
+		<label for="correo">Correo:</label><br>
+		<input type="text" name="email" placeholder="Correo..."><br>
+		<label for="correo">Contraseña:</label><br>
+		<input type="password" name="password" placeholder="Contraseña..."><br>
+		<label for="correo">Número Telefónico:</label><br>
+		<input type="tel" name="telephone" placeholder="Teléfono..."><br>
+		<label for="correo">Dirección:</label><br>
+		<input type="text" name="direction" placeholder="Dirección..."><br>
+		<label for="correo">Fecha de nacimiento:</label><br>
+		<input type="date" name="age" placeholder="Edad..."><br>
+		<input type="submit" value="Sign Up" class="btn-primary btn-hover"><br>
+	</form>
+</center>
+
+
+<style type="text/css">
+
+	.text-warning{
+		text-align: center;
+		
+	}
+
+	.text-red{
+		color: red;
+	}
+	.text-white{
+		color: white;
+	}
+
+	.text-green{
+		color: green;
+	}
+
+	.btn-login{
+		text-align: center;
+		width:350px;
+		border-radius:5px;
+		padding:10px;
+		box-shadow:1px 1px 10px black;
+		transform: translateY(50%);
+		display:inherit;
+	}
+
+	.btn-primary{
+		width: 90%;
+		border-radius: 3px;
+		background-color: rgb(159, 224, 1);
+		border: solid 1px rgb(159, 224, 1);
+		padding: 10px;
+		color: black;
+		margin: 10px;
+		cursor: pointer;
+		box-shadow:1px 1px 10px rgb(159, 224, 1);
+		font-family:"Zeitung Micro Pro";
+	}
+	.btn-secondary{
+		width: 90%;
+		border-radius: 3px;
+		background-color: rgb(20, 29, 43);
+		border: solid 1px rgb(159, 239, 0);
+		padding:10px;
+		color: white;
+		margin: 10px;
+		cursor: pointer;
+		box-shadow:1px 1px 0px black;
+		font-family:"Zeitung Micro Pro";
+	}
+
+	.btn-hover:hover{
+		background-color: rgb(85, 115, 11);
+		border:solid 1px rgb(85, 115, 11);
+		color:white;
+		transition: all ease 0.2s;
+		box-shadow:1px 1px 5px black;
+	}
+	form{
+		text-align: center;
+		width:350px;
+		border-radius:5px;
+		padding:10px;
+		box-shadow:1px 1px 10px black;
+		transform: translateY(20px);
+		display:inherit;
+	}
+	form input{
+		width: 85%;
+		border-radius: 3px;
+		background-color: rgb(20, 29, 43);
+		border: solid 1px rgb(159, 239, 0);
+		padding:10px;
+		color: rgb(159, 239, 0);
+		margin: 10px;
+		box-shadow:1px 1px 3px black;
+		font-family:"Zeitung Micro Pro";
+	}
+	form label{
+		color: white;
+		font-family: Lato;
+		float: left;
+		margin-left:15px;
+	}
+</style>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

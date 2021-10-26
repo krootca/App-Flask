@@ -1,0 +1,986 @@
+/*LOS ESTILOS GLOBALES EN EL PADDING Y MARGIN SIRVEN PARA CIERTAS COSAS QUE SUCEDE CON LOS MENUS*/
+* {
+	padding: 0;
+	margin: 0;
+}
+.img{
+	border-radius:5px;
+	filter: drop-shadow(1px 1px 10px black);
+	z-index:10;
+	/*box-shadow:1px 1px 10px black;*/
+}
+.imgDATA{
+	z-index:11;
+	position: relative;
+	transform: translate(0px,-44px);
+	width:94.9%;
+	height:40px;
+	border-radius:0px 0px 5px 5px;
+	background-color:black;
+	filter: opacity(0.3);
+}
+.imgDATAtext{
+	z-index:11;
+	position: relative;
+	transform: translate(0px,-75px);
+	font-family:"Zeitung Micro Pro";
+	color:white;
+	font-size:100%;
+
+}
+body{
+	background-color:rgb(20,29,43);
+	background-attachment: fixed;
+}
+
+.video{
+	margin-top:20px;
+	margin-bottom:15px;
+	border:solid 1px #9fef00;
+	border-radius:5px;
+	width:70%;
+}
+.goto{
+		/**animations**/
+	color:#9fef00;
+	animation-name:GoTo;
+	animation-duration:2s;
+
+	animation-iteration-count: initial;
+	animation-duration:2s;
+}
+.go{
+	z-index: 999;
+	width:40px;
+	height:40px;
+	padding:5px;
+	background-color:black;
+	border-radius:50%;
+	position:fixed;
+	top:80%;
+	right:10%;
+	cursor: pointer;
+	transform: rotate(180deg);
+	filter: opacity(0.4);
+	box-shadow:0px 0px 7px rgb(0,9,23);
+
+
+}
+.go:hover{
+	transition:all ease 0.200s;
+	filter: opacity(1);
+	box-shadow:1px 1px 10px rgb(0,9,23);
+}
+.go:active{
+	transition:all ease 0.200s;
+	filter: opacity(1);
+	box-shadow:1px 1px 10px rgb(0,9,23);
+	animation-name:GO;
+
+	animation-iteration-count: infinite;
+	animation-duration:0.2s;
+}
+@keyframes GO{
+	0%{
+		filter:opacity(0);
+	}
+	100%{
+		filter:opacity(0.9);
+	}
+}
+@keyframes GoTo{
+	0%{
+		filter:opacity(0);
+	}
+	100%{
+		filter:opacity(0.9);
+	}
+}
+
+
+.goto2{
+		/**animations**/
+	color:#9fef00;
+	animation-name:GoTo2;
+	animation-duration:2s;
+
+	animation-iteration-count: initial;
+	animation-duration:2s;
+}
+@keyframes GoTo2{
+	0%{
+		filter:opacity(0);
+	}
+	100%{
+		filter:opacity(0.9);
+	}
+}
+
+h1{
+	font-family:"Neue Haas Unica";
+	color:white;
+	padding-bottom:5px; 
+}
+.h1{
+	font-family:"Neue Haas Unica";
+	color:white;
+	padding-bottom:5px;
+}
+h2{
+	font-family:"Zeitung Micro Pro";
+	color:white;
+	padding-bottom:5px; 
+}
+.h2{
+	font-family:"Zeitung Micro Pro";
+	color:#9fef00;
+	padding-bottom:5px;
+	font-size:25px;
+	margin-top:20px;
+	margin-bottom:-5px;
+	padding-top:30px;
+
+	padding-top:30px;
+	padding-bottom:30px;
+	border-top:solid 1px rgb(40,49,63);
+}
+h3{
+	font-family:"Zeitung Micro Pro";
+	color:white;
+	padding-bottom:5px; 
+}
+.h3{
+	font-family:"Zeitung Micro Pro";
+	color:#9fef00;
+	padding-bottom:5px;
+	font-size:20px;
+	margin-top:20px;
+	margin-bottom:-5px;
+	
+}
+h4{
+	font-family:"Zeitung Micro Pro";
+	color:white;
+	padding-bottom:5px; 
+}
+.h4{
+	font-family:"Zeitung Micro Pro";
+	color:white;
+	padding-bottom:5px; 
+}
+a{
+	font-family:"Zeitung Micro Pro";
+	color:#9fef00;
+	padding-bottom:5px; 
+}
+.buttons{
+	font-family:"Neue Haas Unica";
+	color:#9fef00;
+}
+
+.num{
+	font-family:"Zeitung Mono Pro";
+	color:#9fef00;
+}
+.especial{
+		padding-top:30px;
+		padding-bottom:30px;
+		border-top:solid 1px rgb(40,49,63);
+		border-bottom:solid 1px rgb(40,49,63);
+}
+.especialdown{
+		padding-top:30px;
+		padding-bottom:30px;
+		border-top:solid 1px rgb(40,49,63);
+}
+.especialup{
+		padding-top:30px;
+		padding-bottom:30px;
+		border-bottom:solid 1px rgb(40,49,63);
+}
+/*UN SIMPLE TITULO*/
+.title{
+	background-color:black;
+	background-repeat: no-repeat;
+	background-size:100% 300%;
+	color:white;
+	font-family: Verdana;
+	text-align: center;
+	padding:10px;
+	font-size:1.5em;
+	z-index:10;
+	height:80px;
+}
+
+
+/*----------------------------*/
+/*-----------MENU--------------*/
+nav{
+	position:relative;
+	width:100%;
+	display: flex;
+	z-index:10;/*Z-INDEX 10 POR QUE QUE SE CREE ABAJO DEL NAV QUERRÁ TOMAR PRIORIDAD*/
+}
+ul{
+	display: flex;/*FLEX PERMITE QUE NO SE VEA COMO UNA COLUMNA LOS ELEMENTOS UL*/
+	width:100%;
+	
+}
+ul li{ /*PARA TODOS LOS ELEMENTOS UL*/
+	background-color:rgb(5,5,5);
+	cursor: pointer; 
+}
+ul .MENU{ /*PARA TODOS LOS ELEMENTOS UL CON CLASE MENU*/
+	position: relative;
+	display:initial;
+	list-style-type:none;	
+	padding:10px;
+	text-align: center;
+	width:100%;
+	height:25px;
+	color:#9fef00;
+
+}
+ul li a{ /*PARA TODOS LOS ELEMENTOS A*/
+	position: relative;
+	display:none;
+	padding:10px 10px 15px 10px;
+	margin:0px;
+	transform: translate(-10px,5px);
+	background-color:rgb(3,3,3);
+	color:#9fef00;
+	width:100%;
+	text-decoration:none; 
+	
+	}
+ul li a:hover{
+	background-color:rgb(40,40,40);
+}
+
+
+/*******EVENTOS HOVER********/
+ul .UNO:hover{ /*ESTA CLASE .UNO ES UN ELEMENTO LI EN EL CUAL SE ACTIVA ESPECIFICAMENTE ESTE MENU*/
+	height: 25px;
+	background-color:rgb(20,20,20);
+	color:white;
+}
+ul .UNO:hover > a{ /*CUANDO EL MOUSE PASA POR ENCIMA, SE ACTIVA LA SECCIÓN DE CODIGO PARA ESA ETIQUETA A*/
+	display: block;
+}
+
+ul .DOS:hover{
+	height: 25px;
+	background-color:rgb(20,20,20);
+	color:white;
+}
+ul .DOS:hover > a{
+	display: block;
+}
+
+ul .TRES:hover{
+	height: 25px;
+	background-color:rgb(20,20,20);
+	color:white;
+}
+ul .TRES:hover > a{
+	display: block;
+	transform: translate(-10px,10px);
+}
+ul .CUATRO:hover{
+	height: 25px;
+	background-color:rgb(20,20,20);
+	color:white;
+}
+ul .CUATRO:hover > a{
+	display: block;
+}
+/*******************/
+/******EMAILSEND****/
+.emailmsg{
+	width:75%;
+	height:auto;
+	margin-top:30px;
+	margin-bottom:30px;
+	background:rgb(40,49,63); 
+	padding:10px;
+	border-radius:10px;
+	
+}
+.emailmsg:hover{
+	box-shadow:0px 0px 5px rgb(40,49,63);
+}
+.emailmsg form{
+	text-align:left;
+	padding:30px;
+}
+.emailmsg .imgmsgbox{
+	float:right;
+	
+	width:40px;
+}
+.emailmsg form input{
+	width:97%;
+	height:30px;
+	background-color:#141d2b;
+	border: solid 2px #9fef00;
+	color:#9fef00;
+	padding:3px 7px 3px 7px; 
+	border-radius:3px;
+
+}
+.emailmsg form .sendmsg{
+	width:97%;
+	height:50px;
+	padding:7px 7px 7px 7px; 
+	background-color:#141d2b;
+	border: solid 2px #9fef00;
+	color:#9fef00;
+	border-radius:3px;
+	overflow-y:visible;
+	overflow-x: hidden;
+	max-width:97%;
+	max-height:200px;
+	min-width:97%;
+}
+.emailmsg form .send{
+	cursor: pointer;
+	width:100%;
+	height:40px;
+	background-color:#9fef00;
+	border: solid 2px #9fef00;
+	border-radius:3px;
+	color:black;
+	font-size:15px;
+
+}
+/*************/
+/* CONTENT */
+.content{
+	margin:30px;
+	padding:0px;
+	text-align:left;
+}
+.listkr{
+	display:initial;
+}
+.listkr li{
+	cursor: initial;
+	margin-top:10px;
+	margin-left:30px; 
+	background-color:transparent; 
+}
+.note{
+	border-radius:5px;
+	background-color:rgb(40,49,63);
+	box-shadow:1px 1px 10px black;
+	padding:20px;
+	margin-top:10px;
+	margin-bottom:10px;
+	font-family:"Zeitung Micro Pro";
+	color:white;
+}
+
+.codezone{
+	border-radius:5px;
+	background-color:rgb(40,49,63);
+	margin-top:10px;
+	margin-bottom:10px;
+	
+}
+.codezone .code{
+	padding:20px;
+}
+.codelittle{
+	border-radius:2px;
+	background-color:rgb(40,49,63);
+	padding:15px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+	
+
+.viewballon{
+	display: flex;
+	transform: translateY(0px);
+	background-color:rgb(30,39,53);
+	width:100%;
+	height:30px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+}
+
+.redballon{
+	border-radius:50%;
+	background-color:red;
+	width:10px;
+	margin-right:10px;
+	height:10px;
+	margin:10px;
+}
+.yellowballon{
+	border-radius:50%;
+	background-color:yellow;
+	width:10px;
+	margin-right:5px;
+	height:10px;
+	margin:10px;
+}
+.greenballon{
+	border-radius:50%;
+	background-color:green;
+	width:10px;
+	margin-right:5px;
+	height:10px;
+	margin:10px;
+}
+.resalt{
+	background-color:rgb(50,59,73);
+	padding-top:-3px;
+	padding-bottom:-3px;
+	border-radius:5px;
+}
+.resaltgreen{
+	border-radius:5px;
+	padding-top:-3px;
+	padding-bottom:-3px;
+	background-color:rgb(40,49,63);
+	color:#9fef00;
+}
+.resaltred{
+	border-radius:5px;
+	padding-top:-3px;
+	padding-bottom:-3px;
+	background-color:rgb(40,49,63);
+	color:rgb(200,50,50);
+}
+
+/**********/
+.imgdate{
+	width:350px;
+	height:250px;
+	padding:5px;
+	margin-top:20px;
+	margin-bottom:20px;
+	margin-left:0px;
+	background:linear-gradient(90deg, rgb(100,0,0), rgb(60,60,60));
+	border-radius:5px;
+	border:solid 1px transparent;
+}
+.imgdatetwo{
+	position:absolute;
+	transform: translate(500px,-300px);
+}
+.imgdate:hover{
+	transition: all ease 0.300s;
+	cursor: pointer;
+	width:360px;
+	border:solid 1px red;
+}
+.imgdate:hover > .imgIMGDATE{
+	background-image:url("../../../static/multimedia/img/all/tutorial/dimealgo.gif");
+}
+.imgdate .imgIMGDATE{
+	width:100%;
+	height:200px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px; 
+	background-image:url("../../../static/multimedia/img/all/tutorial/CreateLaucher.png");
+}
+.imgdate .textOF{
+	padding:5px;
+	display:flex;
+}
+.imgdate .textOF .iconoIMGDATE{
+	width:40px;
+	height:40px;
+}
+.imgdate .textOF .textminIMGDATE{
+	color: #ffffffad;
+	font-size:10px;
+}
+.imgdate .textOF .textminIMGDATE .textbigIMGDATE{
+	font-size:20px;
+}
+/**********************/
+/********INFORM********/
+/**********************/
+.INFORM{
+	display:flex;
+	font-family: Arial;
+	width:400px;
+}
+/*LOGO*/
+.INFORM .LOGOinform{
+	padding:10px 10px 10px 15px;
+	background:linear-gradient(32deg, #280c23, rgb(96, 10, 82));
+	border-top-left-radius:10px;
+	border-bottom-left-radius:10px; 
+}
+.INFORM .LOGOinform .TEXTlogoINFORM{
+	font-size:18px;
+}
+
+.INFORM .LOGOinform .LOGOinformDEF{
+	width:60px;
+	transform: translateY(25%);
+}
+
+/*CONTENT*/
+
+.INFORM .CONTENTinform{
+	padding:10px 10px 10px 15px;
+	background:linear-gradient(32deg, white, whitesmoke);
+	border-bottom-right-radius:10px; 
+	border-top-right-radius:10px;
+	color:black;
+}
+.INFORM .CONTENTinform .TITULOinform{
+	font-size:16px;
+}
+.INFORM .CONTENTinform .TEXTinform{
+	font-size:13px;
+	color:rgb(145, 18, 191);
+}
+.INFORM .CONTENTinform .VALUEinform img{
+	width:20px;
+	transform: translateY(3px);
+}
+/**********************/
+@media only screen and (max-width: 500px){
+	.imgdate{
+		width:90%;
+		height:250px;
+		padding:5px;
+		margin-top:20px;
+		margin-bottom:20px;
+		margin-left:20px;
+		background:linear-gradient(90deg, rgb(100,0,0), rgb(60,60,60));
+		border-radius:5px;
+		border:solid 1px transparent;
+	}
+	.imgdate:hover{
+		transition: all ease 0.300s;
+		cursor: pointer;
+		width:95%;
+		border:solid 1px red;
+	}
+	.imgdatetwo{
+		position:initial;
+		transform: translate(0px,0px);
+		background-color:red;
+	}
+
+}
+
+
+/*****************/
+.IAM{
+	padding:20px;
+	width:60%;
+	height:auto;
+	border-radius:5px;
+	margin-top:3em;
+	margin-bottom:1em; 
+	box-shadow:1px 1px 10px black;
+	transition: all ease 1s; 
+	filter: sepia(0);
+}
+.IAM .circleFOTO{
+	width:7.5em;
+	height:7.5em;
+	border-radius:50%;
+	background-color: transparent;
+	margin-top:1em;	
+	margin-bottom:1em;
+	box-shadow:1px 1px 10px black;
+	background-image: url("../../multimedia/img/all/LOGO.png");
+	background-size: 100% 100%;
+	background-repeat:no-repeat;
+}
+.IAM .IAMheading{
+	font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+
+}
+.IAM .IAMtext{
+	max-width:20.5em;
+	color: white;
+	font-family:"Liberation Mono","Courier New",monospace;
+}
+.IAM .IAMbtn{
+	margin-top:2em;
+	display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid white;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+}
+.IAM .IAMbtn:hover{
+	color: #9fef00;
+	background-color: black;
+	border: 1px solid #9fef00;
+	transition: all ease 1s; 
+}
+@media only screen and (max-width: 500px){
+	.IAM{
+		width:80%;
+	}	
+}
+
+/******************/
+
+
+:root {
+	--colorW:rgb(255,255,255);
+}
+
+h1{
+	color: var(--colorW)
+}
+
+/*-------------SEPARATOR----------*/
+.content .SEPARATOR{
+	
+	padding:10px;
+	background-color: #9fef00;
+	color: black;
+	box-shadow:1px 1px 5px  #9fef00;
+	border-radius:5px;
+}
+.content .SEPARATOR h2{
+	color: black;
+}
+.content .SEPARATOR h4{
+	color: black;
+}
+
+/*--------------------------------*/
+/*--------------------------------*/
+	/* WORK */
+.portfolio {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom:40px;
+}
+
+.portfolio .item {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 5px;
+
+}
+
+.portfolio .item img {
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio .item .action {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.portfolio .item .action a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #fff;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+.portfolio .item .action:hover {
+  opacity: 1;
+}
+/*-----------------------------*/
+/*-------------EL FIN----------*/
+.THE-END{
+	width: 100%;
+	background-color: rgb(24, 24, 24);
+	min-height: 10vh;
+	z-index: 2;
+	position: absolute;
+	padding-top:20px;
+}
+.THE-END a{
+	color: transparent;
+}
+
+.THE-END h6{
+	color: white;
+	font-family: "Poppins", sans-serif;
+	
+}
+.THE-END img{
+	cursor: pointer;
+	position: absolute;
+}
+.THE-END .IMG1{
+	transform: translateX(5px);
+}
+.THE-END .IMG2{
+	transform: translateX(45px);
+}
+.THE-END .IMG3{
+	transform: translateX(85px);
+}
+.THE-END img:hover{
+	width:35px;
+	transition: all ease 0.2s;
+}
+
+/*----------------------------*/
+
+/* features */
+
+.features-head,
+.docs-head {
+  margin-top: 4rem;
+}
+
+.features-head img,
+.docs-head img {
+  width: 200px;
+  justify-self: flex-end;
+}
+
+.features-sub-head img {
+  width: 300px;
+  justify-self: flex-end;
+}
+
+.features-main .card > i {
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.features-main .grid {
+  padding: 20px;
+}
+
+.features-main .grid > *:first-child {
+  grid-column: 1 / span 3;
+}
+
+.features-main .grid > *:nth-child(2) {
+  grid-column: 1 / span 2;
+}
+
+
+
+/* Margin */
+.my-1 {
+  margin: 1rem 0;
+}
+
+.my-2 {
+  margin: 1.5rem 0;
+}
+
+.my-3 {
+  margin: 2rem 0;
+}
+
+.my-4 {
+  margin: 3rem 0;
+}
+
+.my-5 {
+  margin: 4rem 0;
+}
+
+.m-1 {
+  margin: 1rem;
+}
+
+.m-2 {
+  margin: 1.5rem;
+}
+
+.m-3 {
+  margin: 2rem;
+}
+
+.m-4 {
+  margin: 3rem;
+}
+
+.m-5 {
+  margin: 4rem;
+}
+
+/* Padding */
+.py-1 {
+  padding: 1rem 0;
+}
+
+.py-2 {
+  padding: 1.5rem 0;
+}
+
+.py-3 {
+  padding: 2rem 0;
+}
+
+.py-4 {
+  padding: 3rem 0;
+}
+
+.py-5 {
+  padding: 4rem 0;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.p-2 {
+  padding: 1.5rem;
+}
+
+.p-3 {
+  padding: 2rem;
+}
+
+.p-4 {
+  padding: 3rem;
+}
+
+.p-5 {
+  padding: 4rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.showcase .grid {
+  overflow: visible;
+  grid-template-columns: 55% auto;
+  gap: 30px;
+}
+
+.grid {
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.card {
+    background-color: rgb(40,49,63);
+    color: var(--grey-color);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px black;
+    padding: 20px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* features */
+
+.features-head,
+.docs-head {
+  margin-top: 4rem;
+}
+
+.features-head img,
+.docs-head img {
+  width: 200px;
+  justify-self: flex-end;
+}
+
+.features-sub-head img {
+  width: 300px;
+  justify-self: flex-end;
+}
+
+.features-main .card > i {
+  margin-right: 20px;
+}
+
+.features-main .grid {
+  padding: 30px;
+}
+
+.features-main .grid > *:first-child {
+  grid-column: 1 / span 3;
+}
+
+.features-main .grid > *:nth-child(2) {
+  grid-column: 1 / span 2;
+}
+
+@media (max-width: 768px) {
+  .grid,
+  .showcase .grid,
+  .stats .grid,
+  .cli .grid,
+  .cloud .grid,
+  .features-main .grid,
+  .docs-main .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+  .cli .grid > *:first-child,
+  .features-main .grid > *:first-child,
+  .features-main .grid > *:nth-child(2) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+
+/**********************/
+.FRTX{
+	position: absolute;
+}
+.RTX{
+	z-index:1;
+	width:200px;
+	height:450px; 
+	position: absolute;
+}
+.RTX2{
+	width:190px;
+	height:410px; 
+	transform: translate(-200px, -15px);
+	z-index:99;
+}
