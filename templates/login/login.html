@@ -33,6 +33,12 @@
 	</div>
 	<form action="{{ url_for('login') }}" method="post" id="form-login">
 		<label for="email">Correo:</label><br>
+
+		<input type="text" name="email" placeholder="Correo..." id="email" onfocus="normalColorCorreo()"><br>
+		<label for="password">Contraseña:</label><br>
+		<input type="password" name="password" placeholder="Contraseña..." id="password" onfocus="normalColorPassword()"><br>
+		<input type="submit" value="Login" class="btn-primary btn-hover" onclick="regex_re()"><br>
+
 		<input type="text" name="email" placeholder="Correo..."><br>
 		<label for="password">Contraseña:</label><br>
 		<input type="password" name="password" placeholder="Contraseña..."><br>
@@ -131,10 +137,76 @@
 </style>
 
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+
+
 <script src={{ url_for("static", filename="javascript/socket.io.js") }}></script>
 
 <script type="text/javascript">
 const socket = io();
+
+
+/*Expresiones regulares y su condicional*/
+var correo_re=/^[\w]+@{1}[\w]+\.+[a-z]{2,3}$/;
+var password_re=/^[a-zA-Z0-9\W\w]{7,30}$/;
+
+var form=document.getElementById("form-login");
+var my_correo=document.getElementById("email");
+var my_password=document.getElementById("password");
+
+function regex_re(){
+	
+	var result_correo=correo_re.test(my_correo.value);
+	var result_password=password_re.test(my_password.value);
+	
+	$( "#form-login" ).on( "submit",function(e){
+		if (result_correo===true && result_password===true) {
+			true
+		}else{
+			e.preventDefault()
+			console.log(result_correo, result_password)
+			if(result_correo===false && result_password===false){
+				my_correo.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
+				my_password.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";	
+			}
+			else if (result_correo==false) {
+				my_correo.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
+				console.log("result_correo")
+			}
+			else if (result_password==false) {
+				my_password.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
+				console.log("result_password")
+			}
+		}
+	});
+};
+
+
+function normalColorCorreo(){
+	my_correo.style="border:solid 1px rgb(159, 239, 0);color:rgb(159, 239, 0);";
+}
+function normalColorPassword(){
+	my_password.style="border:solid 1px rgb(159, 239, 0);color:rgb(159, 239, 0);";
+}
+/**************************************/
+
+
+var FormLogin=document.getElementById('form-login');
+var btnLogin=document.getElementById('btn-login');
+var backto=document.getElementById("backto");		
+var bolean=false;
+
+
+function clickLogin() {
+	if (bolean===false) {
+			FormLogin.style="display:inherit;";
+			backto.style="cursor:pointer;transform:rotate(90deg);position:bsolute;border-radius:50%;width:100px;display: inherit;";
+			btnLogin.style="display:none;";
+			bolean=true;
+
+	}else if (bolean===true) {
+
 var TEXTCHAT=document.getElementById("TEXTCHAT");
 function sendMsg() {
 	socket.emit("messageSER",document.getElementsByName('messageText')[0].value);
@@ -158,6 +230,7 @@ socket.on('messageBOT', function(msg){
 			bolean=true;
 		}
 		else if (bolean===true) {
+
 			FormLogin.style="display:none;";
 			backto.style="transform:rotate(90deg);position: absolute;border-radius:50%;width:100px;display: none;";
 			btnLogin.style="display:inherit;";
