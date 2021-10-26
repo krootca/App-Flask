@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>App-home</title>
+	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename = 'css/base.css') }}>
+</head>
+<body>
+
+<content>
+<div class="title">
+	<br>
+		Flask - App
+		<br>
+	</div>
+
+	<div class="titleLOGO"></div>
+	<!--EL MENU-->
+
+
+	<div class="content">
+		<h1>Página web en Python:</h1>
+
+		<h4 class="especialdown">
+			Esta página está totalmente construida en Python3<img src={{ url_for('static', filename='images/icons/python.svg') }} style="height:15px">, usando un modulo llamado <a href="#">Flask</a>, gracias a ello, puedes ver esta página totalmente funcional donde el motor de plantillas es ninja2, y tambien puedes usar socket.io, por ejemplo, en las aplicaciones web para chats.</h4>
+
+		<div class="note" style="margin-bottom:50px">
+		Nota: Jackeline si quieres ver la documentación de <a href="https://www.google.com/search?=flask">Flask<img src={{ url_for('static', filename='images/icons/link.svg') }} style="height:15px"></a> en Python3<img src={{ url_for('static', filename='images/icons/python.svg') }} style="height:15px"> te dejo una documentación <a href={{ url_for('static', filename='documents/Jackeline.pdf') }}>aquí</a>
+		</div>
+		<h2>Modulos:</h2>
+		<h4 class="especialdown">
+			Todo esto usa ciertos modulos en <span class="resalt">python</span> y la web en sí, trabaja con un motor de plantillas llamado ninja2, que básicamente ayuda a la conexión entre las variables de python y las etiquetas de html, pero los modulos principales son:
+		<ul class="listkr">
+			<li>Flask</li>
+			<li>flask_socketio</li>
+			<li>random</li>
+			<li>time</li>
+			<li>os</li>
+		</ul>
+		<br>
+		Para la base de datos se utilizó:
+		<ul class="listkr">
+			<li>sqlite3</li>
+			<li>re</li>
+			<li>random</li>
+			<li>time</li>
+		</ul>
+		<br>
+	</div>
+	<center>
+		<div class="IAM">
+			<img class="circleFOTO" src={{ url_for('static', filename='images/icons/python.svg') }}>
+			<h2 class="IAMheading">K R O O T C A</h2>
+			<p class="IAMtext">Te invito a registrarte o logearte, donde se tendrá mas privilegios con respecto a las bases de datos.</p>
+			
+			<div>
+				<a class="IAMbtn" href="/login">LOGIN »</a>
+			</div>
+
+		</div>
+		
+	</center>
+</content>
+
+<img src={{ url_for('static', filename = 'images/icons/go.svg') }} class="go" onclick="GotoUp()" id="GOTOUP">
+
+<div class="THE-END">
+	<a href="#">
+		<img class="IMG1" src={{ url_for('static', filename='/images/icons/twitter.svg') }} width="30px">
+	</a>
+	<a href="#">
+		<img class="IMG2" src={{ url_for('static', filename='/images/icons/instagram.svg') }} width="30px">
+	</a>
+	<a href="#">
+		<img class="IMG3" src={{ url_for('static', filename='/images/icons/facebook.svg') }} width="30px">
+	</a>
+	<center>
+		<h6>License MIT© 2021.</h6>
+	</center>
+</div>
+
+<script src={{ url_for("static", filename="javascript/socket.io.js") }}></script>
+<script src={{ url_for("static", filename="javascript/base.js") }}></script>
+<script type="text/javascript">
+const socket = io();
+var TEXTCHAT=document.getElementById("TEXTCHAT");
+function sendMsg() {
+	socket.emit("messageSER",document.getElementsByName('messageText')[0].value);
+}
+
+socket.on('messageBOT', function(msg){
+	TEXTCHAT.innerHTML +=`<h3>Simbah: ${msg}</h3>`;
+	TEXTCHAT.scrollTo(0,TEXTCHAT.scrollTopMax);
+});
+
+</script>
+</body>
+</html>

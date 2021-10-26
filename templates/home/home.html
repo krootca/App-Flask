@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>App-home</title>
+	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename = 'css/base.css') }}>
+</head>
+<body>
+
+<div class="title">
+		<br>
+		{{ user_name }}
+		<br>
+	</div>
+
+	<div class="titleLOGO"></div>
+	<!--EL MENU-->
+	<nav>
+		<ul>
+			<li class="MENU UNO"><img src={{ url_for('static', filename='images/icons/home.svg') }} style="height:25px"> <br>
+				<a href="/">Inicio</a>
+				<a href="www.facebook.com">Facebook</a>
+			</li >
+			<li class="MENU DOS"><img src={{ url_for('static', filename='images/icons/flag-red.svg') }} style="height:25px"> <br>
+				<a href="#">Ejemplo</a>
+				<a href="#">Ejemplo</a>
+			</li >
+			<li class="MENU TRES"><img src={{ url_for('static', filename='images/icons/configure.svg') }} style="height:20px"><br>
+				<a href="/logout">Cerrar cuenta</a>
+			</li>
+		</ul>
+	</nav>
+
+<div class="content">
+	<h1></h1>
+<!--REGISTROS-->
+<div class="CDB">
+	<input type="text" name="codigo" placeholder="">
+	<input type="text" name="nombre_equipo" placeholder="">
+	<br>
+	<input type="text" name="marca" placeholder="">
+	<input type="text" name="modelo" placeholder="">
+	<br>
+	<input type="text" name="estado" placeholder="">
+	<input type="text" name="observacion" placeholder="">
+	<br>
+	<input type="text" name="transferencia" placeholder="">
+	<input type="text" name="stock" placeholder="">
+	<br>
+	<input type="text" name="area" placeholder="">
+	<input type="text" name="user_id" placeholder="">
+	<input type="text" name="producto_id" placeholder="">
+</div>
+
+<div class="IMDB">
+	<input type="text" name="url" placeholder="">
+	<input type="text" name="marca" placeholder="">
+	<input type="text" name="nombre_equipo" placeholder="">
+	<input type="text" name="user_id" placeholder="">
+	<input type="text" name="producto_id" placeholder="">
+	
+</div>
+
+<div class="IDB">
+	<input type="text" name="codigo" placeholder="">
+	<input type="text" name="marca" placeholder="">
+	<input type="text" name="nombre_equipo" placeholder="">
+	<input type="text" name="precio" placeholder="">
+	<input type="text" name="estado" placeholder="">
+	<input type="text" name="modelo" placeholder="">
+	<input type="text" name="observacion" placeholder="">
+	<input type="text" name="fecha_compra" placeholder="">
+	<input type="text" name="tecnico" placeholder="">
+	<input type="text" name="area" placeholder="">
+	<input type="text" name="user_id" placeholder="">
+	<input type="text" name="producto_id" placeholder="">
+</div>
+
+<div class="MDB">
+	<input type="text" name="codigo" placeholder="">
+	<input type="text" name="marca" placeholder="">
+	<input type="text" name="nombre_equipo" placeholder="">
+	<input type="text" name="precio" placeholder="">
+	<input type="text" name="estado" placeholder="">
+	<input type="text" name="modelo" placeholder="">
+	<input type="text" name="observacion" placeholder="">
+	<input type="text" name="fecha_salida" placeholder="">
+	<input type="text" name="fecha_ingreso" placeholder="">
+	<input type="text" name="area" placeholder="">
+	<input type="text" name="user_id" placeholder="">
+	<input type="text" name="producto_id" placeholder="">
+</div>
+<!------------->
+<style type="text/css">
+.CDB{
+	padding:10px;
+	margin: 10px;
+	border:solid 1px black;
+	display:;
+	width: 30%;
+}
+
+.CDB input{
+	width:95%;
+}
+.IMDB{
+	padding:10px;
+	margin: 10px;
+	border:solid 1px black;
+	display:;
+	width: 30%;
+}
+.IMDB input{
+	width:95%;
+}
+.IDB{
+	padding:10px;
+	margin: 10px;
+	border:solid 1px black;
+	display:;
+	width: 30%;
+}
+.IDB input{
+	width:95%;
+}
+.MDB{
+	padding:10px;
+	margin: 10px;
+	border:solid 1px black;
+	display:;
+	width: 30%;
+}
+.MDB input{
+	width:95%;
+}
+</style>
+<!------------->
+
+<script src={{ url_for("static", filename="javascript/socket.io.js") }}></script>
+<script src={{ url_for("static", filename="javascript/base.js") }}></script>
+<script type="text/javascript">
+const socket = io();
+var TEXTCHAT=document.getElementById("TEXTCHAT");
+function sendMsg() {
+	socket.emit("messageSER",document.getElementsByName('messageText')[0].value);
+}
+
+socket.on('messageBOT', function(msg){
+	TEXTCHAT.innerHTML +=`<h3>Simbah: ${msg}</h3>`;
+	TEXTCHAT.scrollTo(0,TEXTCHAT.scrollTopMax);
+});
+
+</script>
+</body>
+</html>
