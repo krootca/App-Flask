@@ -6,7 +6,7 @@ import random, re, time
 #time para proporcionar al algoritmo información del sistema, fecha, hora
 
 #regex o expresiones regulares
-nick_re		= re.compile(r"^[a-zA-Z0-9]{4,12}$")
+nick_re		= re.compile(r"^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.'-]{4,14}$")
 age_re		= re.compile(r'^((19|20)\d\d)-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$')
 email_re	= re.compile(r"\b[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,6}\b")
 password_re	= re.compile(r"^[a-zA-Z0-9\W\w]{7,30}$")
@@ -158,11 +158,11 @@ def cityVerific(direction):
 	except Exception as e:
 		return "Peru, Lima"
 
-
 def account_signup(user_name, user_surname, email, password, telephone, direction, age):
 	db_app = sqlite3.connect("database.db", check_same_thread=False)
 	cursor = db_app.cursor()
-	if nameRETURN(email)==False or nameRETURN(email)==None and str(nick_re.search(user_name))!=None and str(nick_re.search(user_surname))!=None and str(email_re.search(email))!=None and str(password_re.search(password))!=None and str(tel_peru_re.search(telephone))!=None and direction!=None and str(age_re.search(age)):
+	print(numerRETURN(email), "ok")
+	if numerRETURN(email)==None and nameRETURN(email)==None and str(nick_re.search(user_name))!="None" and str(nick_re.search(user_surname))!="None" and str(email_re.search(email))!="None" and str(password_re.search(password))!="None" and str(tel_peru_re.search(telephone))!="None" and direction!="None" and str(age_re.search(age))!="None":
 		user_id=random.randint(99999,99999999)
 		content=[(user_name), (user_surname), (email), (password), (telephone), (cityVerific(direction)), (age), (user_id)]
 		cursor.execute("INSERT or IGNORE INTO accounts (user_name,user_surname, email, password, phone, direction, age, user_id) VALUES (?,?,?,?,?,?,?,?)",content)
@@ -173,21 +173,29 @@ def account_signup(user_name, user_surname, email, password, telephone, directio
 		db_app.close()
 		return False
 
-try:
-	def nameRETURN(correo):
-		db_app = sqlite3.connect("database.db", check_same_thread=False)
-		cursor = db_app.cursor()
-		account_data=cursor.execute('SELECT * FROM accounts ORDER BY _rowid_').fetchall()
-		for i in account_data:
-			if correo==i[2]:
-				db_app.close()
-				return i[0]
-			elif correo==i[0]:
-				db_app.close()
-				return i[0]
-		db_app.close()
-except Exception as e:
-	pass
+def nameRETURN(correo):
+	db_app = sqlite3.connect("database.db", check_same_thread=False)
+	cursor = db_app.cursor()
+	account_data=cursor.execute('SELECT * FROM accounts ORDER BY _rowid_').fetchall()
+	for i in account_data:
+		if correo==i[2]:
+			db_app.close()
+			return i[0]
+		else:
+			pass
+	db_app.close()
+
+def numerRETURN(correo):
+	db_app = sqlite3.connect("database.db", check_same_thread=False)
+	cursor = db_app.cursor()
+	account_data=cursor.execute('SELECT * FROM accounts ORDER BY _rowid_').fetchall()
+	for i in account_data:
+		if correo==i[2]:
+			db_app.close()
+			return i[4]
+		else:
+			pass
+
 
 def accountUPDATE(data_update, code_user, data_modific, password): #return True or None
 	db_app = sqlite3.connect("database.db", check_same_thread=False)

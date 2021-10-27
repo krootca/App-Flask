@@ -140,9 +140,12 @@
 <script type="text/javascript">
 
 /*Expresiones regulares y su condicional*/
+var nickname_re=/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/;
 var correo_re=/^[\w]+@{1}[\w]+\.+[a-z]{2,3}$/;
 var password_re=/^[a-zA-Z0-9\W\w]{5,50}$/;
-
+var age_re=/^((19|20)\d\d)-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
+var telephone_re=/^.+(51)([0-9\w]{9})$/;
+var direction_re=/^[a-zA-Z0-9]{3,30}$/;
 
 var form=document.getElementById("form-login");
 var user_name=document.getElementById("user_name");
@@ -153,32 +156,41 @@ var telephone=document.getElementById("telephone");
 var direction=document.getElementById("direction");
 var age=document.getElementById("age");
 
-function regex_re(){
-	var user_name=nickname_re.test()
+
+	var result_name=nickname_re.test(user_name);
+	var result_surname=nickname_re.test(user_surname);
 	var result_correo=correo_re.test(my_correo.value);
 	var result_password=password_re.test(my_password.value);
-	
-	$( "#form-login" ).on( "submit",function(e){
-		if (result_correo===true && result_password===true) {
-			true
-		}else{
-			e.preventDefault()
-			console.log(result_correo, result_password)
-			if(result_correo===false && result_password===false){
-				my_correo.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
-				my_password.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";	
-			}
-			else if (result_correo==false) {
-				my_correo.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
-				console.log("result_correo")
-			}
-			else if (result_password==false) {
-				my_password.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
-				console.log("result_password")
-			}
+	var result_telephone=telephone_re.test(telephone);
+	var result_direction=direction_re.test(direction);
+	var result_age=age_re.test(age);
+
+$( "#form-login" ).on( "submit",function(e){
+	if (result_correo===true && result_password===true &&
+		result_name===true && result_surname===true &&
+		result_direction===true && result_age===true) {
+		e.preventDefault()
+	}else{
+		e.preventDefault()
+		console.log(result_correo, result_password)
+		if(result_correo===false && result_password===false){
+			user_name.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";	
+			user_surnamer.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
+			my_correo.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
+			my_password.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";	
+			telephone.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
+			direction.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
+			age.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";			
 		}
-	});
-};
+		else if (result_correo==false) {
+			my_correo.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
+		}
+		else if (result_password==false) {
+			my_password.style="border:solid 1px rgb(239, 0, 101);color: rgb(239, 0, 101);";
+		}
+	}
+});
+
 
 
 function normalColorCorreo(){
