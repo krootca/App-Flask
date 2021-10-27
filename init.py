@@ -36,16 +36,18 @@ def login():
 			password=request.form.get('password');
 			if password != None or email != None:
 				AL=account_login(email=email, password=password)
+				print(AL)
+				print("-------------------------")
 				if AL == None:
 					return render_template("login/login.html", style_warning="text-warning text-red", text_warning="La cuenta no existe")
-				elif AL == True:
+				elif AL == True and AL!=None:
 						session['emailXZK']=email
 
-						if "nickname" in session:
+						if "emailXZK" in session:
 							return redirect('/home')
 						else:
 							return render_template("login/login.html", style_warning="text-warning text-red", text_warning="Ocurrió un error con coockies al logearse.")
-				else:
+				elif AL!=True and AL!=None:
 					return render_template("login/login.html", style_warning="text-warning text-white", text_warning="Ocurrió un error al logearse.")
 		return render_template("login/login.html")
 
@@ -62,6 +64,7 @@ def signup():
 		age=request.form.get('age');
 
 		if user_name!=None or user_surname!=None or email!=None or password!=None or telephone!=None or direction!=None or age!=None:
+			
 			signup=account_signup(user_name, user_surname, email, password, telephone, direction, age)
 			if signup==True:
 				return render_template("login/login.html", style_warning="text-warning text-green", text_warning="¡Gracias por suscribirte!.")

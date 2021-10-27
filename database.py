@@ -135,14 +135,36 @@ def account_login(email, password): #true is ok # false is error with regular ex
 		else: #email or password is incorrect
 			return False 
 
+def cityVerific(direction):
+	try:
+		if int(direction)==1:
+			direction="Peru, Lima"
+			return direction
+		elif int(direction)==2:
+			direction="Peru, Cusco"
+			return direction
+		elif int(direction)==3:
+			direction="Peru, Puno"
+			return direction
+		elif int(direction)==4:
+			direction="Peru, Junin"
+			return direction
+		elif (direction)==5:
+			direction="Peru, Piura"
+			return direction
+		else:
+			direction="Peru, Lima"
+			return direction
+	except Exception as e:
+		return "Peru, Lima"
 
 
 def account_signup(user_name, user_surname, email, password, telephone, direction, age):
 	db_app = sqlite3.connect("database.db", check_same_thread=False)
 	cursor = db_app.cursor()
-	if nameRETURN(email)==None and str(nick_re.search(user_name))!=None and str(nick_re.search(user_surname))!=None and str(email_re.search(email))!="None" and str(password_re.search(password))!="None" and str(tel_peru_re.search(telephone))!="None" and direction!=None and str(age_re.search(age)):
+	if nameRETURN(email)==False or nameRETURN(email)==None and str(nick_re.search(user_name))!=None and str(nick_re.search(user_surname))!=None and str(email_re.search(email))!=None and str(password_re.search(password))!=None and str(tel_peru_re.search(telephone))!=None and direction!=None and str(age_re.search(age)):
 		user_id=random.randint(99999,99999999)
-		content=[(user_name), (user_surname), (email), (password), (telephone), (direction), (age), (user_id)]
+		content=[(user_name), (user_surname), (email), (password), (telephone), (cityVerific(direction)), (age), (user_id)]
 		cursor.execute("INSERT or IGNORE INTO accounts (user_name,user_surname, email, password, phone, direction, age, user_id) VALUES (?,?,?,?,?,?,?,?)",content)
 		db_app.commit()
 		db_app.close()
@@ -224,12 +246,17 @@ def showImage():
 	db_app.close()
 	return datos
 
-#--- example ----
-THENAME="Mark"
-THESURNAME="Akernan"
-EMAIL="markaker@example.com"
-PASSWORD="passsword"
-TEL="+51568368475"
-DIRECTION="EEUU, New York"
-FECHA = time.localtime()
-#----------------
+
+def deleteAccounts(email, password): #true is ok # false is error with regular expretion # None is login failed
+	db_app = sqlite3.connect("database.db", check_same_thread=False)
+	cursor = db_app.cursor()
+	for i in return_all():
+		if str(email_re.search(email))!="None" and str(password_re.search(password))!="None":
+			if email==i[2] and password == i[3]: #if email is a email
+				datos=cursor.execute('DELETE FROM accounts WHERE email = "{0}";'.format(email))
+				db_app.commit()
+				db_app.close()
+				return True
+		else: #email or password is incorrect
+			db_app.close()
+			return False 
